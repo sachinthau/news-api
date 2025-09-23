@@ -1,0 +1,23 @@
+{
+  "name": "news-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/server.ts",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "node dist/server.ts",
+    "build": "tsc --project tsconfig.json",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.5.2",
+    "eslint": "^9.36.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}
