@@ -1,10 +1,10 @@
-import express from "express";
+import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import rateLimit from 'express-rate-limit';
-import PinoHttp from "pino-http";
+import PinoHttp from 'pino-http';
 import swaggerUi from 'swagger-ui-express';
-import { swaggerSpec } from "./docs/swagger";
+import { swaggerSpec } from './docs/swagger';
 import { AppConfig } from './config/app.config';
 import setNewsRoutes from './routes/newsRoutes';
 
@@ -32,7 +32,7 @@ app.use(express.json({ limit: AppConfig.jsonBodyLimit }));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Check server liveness endpoint
-app.get("/livez", (_req, res) => res.json({ message: "Server is live" }));
+app.get('/livez', (_req, res) => res.json({ message: 'Server is live' }));
 
 // Set news routes
 setNewsRoutes(app);
