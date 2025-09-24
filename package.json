@@ -1,6 +1,8 @@
 {
   "name": "news-api",
   "version": "1.0.0",
+  "author": "K.G. Sachintha Udara",
+  "license": "MIT",
   "private": true,
   "type": "module",
   "main": "src/server.ts",
@@ -11,6 +13,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "axios": "^1.12.2",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "express-rate-limit": "^8.1.0",
@@ -24,6 +27,7 @@
     "@types/node": "^24.5.2",
     "cross-env": "^10.0.0",
     "eslint": "^9.36.0",
+    "pino-pretty": "^13.1.1",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   }

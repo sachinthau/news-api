@@ -4,6 +4,7 @@ import cors from 'cors';
 import rateLimit from 'express-rate-limit';
 import PinoHttp from "pino-http";
 import { AppConfig } from './config/app.config';
+import setNewsRoutes from './routes/newsRoutes';
 
 // Establish Express app
 const app = express();
@@ -27,6 +28,9 @@ app.use(express.json({ limit: AppConfig.jsonBodyLimit }));
 
 // Check server liveness endpoint
 app.get("/livez", (_req, res) => res.json({ message: "Server is live" }));
+
+// Set news routes
+setNewsRoutes(app);
 
 const PORT = Number(3000);
 
