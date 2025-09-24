@@ -5,17 +5,24 @@
   "type": "module",
   "main": "src/server.ts",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
-    "start": "node dist/server.ts",
+    "dev": "cross-env NODE_ENV=development tsx watch src/server.ts",
+    "start": "cross-env NODE_ENV=production node dist/server.ts",
     "build": "tsc --project tsconfig.json",
     "lint": "eslint ."
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^8.1.0",
+    "pino": "^9.11.0",
+    "pino-http": "^10.5.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/node": "^24.5.2",
+    "cross-env": "^10.0.0",
     "eslint": "^9.36.0",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2"
