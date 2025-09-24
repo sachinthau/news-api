@@ -14,6 +14,7 @@ async function fetchAndMapArticles(url: string): Promise<NewsArticle[]> {
         title: article.title,
         author:  article.source?.name || '',
         description: article.description,
+        content: article.content || '',
         url: article.url,
         publishedAt: article.publishedAt,
         source: {
