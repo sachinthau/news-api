@@ -1,7 +1,11 @@
 import axios from 'axios';
 import { NewsArticle } from '../types';
+import { AppConfig } from '../config/app.config.js';
 
-const apiKey = '70fad1c1bba553a6fce130d45489e3a9';
+// Check API key is available
+if (!AppConfig.gnews.apiKey) {
+    throw new Error('GNews API key is required but not provided');
+}
 
 async function fetchAndMapArticles(url: string): Promise<NewsArticle[]> {
     const response = await axios.get(url);
@@ -25,7 +29,7 @@ async function fetchAndMapArticles(url: string): Promise<NewsArticle[]> {
 }
 
 export async function svcFetchArticles(N: number): Promise<NewsArticle[]> {
-    const url = `https://gnews.io/api/v4/top-headlines?max=${N}&token=${apiKey}`;
+    const url = `${AppConfig.gnews.baseUrl}/top-headlines?max=${N}&token=${AppConfig.gnews.apiKey}`;
     return fetchAndMapArticles(url);
 }
 
@@ -40,6 +44,6 @@ export async function svcFindArticlesByAuthor(author: string): Promise<NewsArtic
 }
 
 export async function svcSearchArticlesByKeywords(keywords: string): Promise<NewsArticle[]> {
-    const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(keywords)}&token=${apiKey}`;
+    const url = `${AppConfig.gnews.baseUrl}/search?q=${encodeURIComponent(keywords)}&token=${AppConfig.gnews.apiKey}`;
     return fetchAndMapArticles(url);
 }

@@ -37,8 +37,10 @@ app.get('/livez', (_req, res) => res.json({ message: 'Server is live' }));
 // Set news routes
 setNewsRoutes(app);
 
-const PORT = Number(3000);
+const PORT = AppConfig.server.port;
 
 app.listen(PORT, () => {
-  console.log(`News API server listening on http://localhost:${PORT}`);
+  console.log(`${AppConfig.applicationName} server listening on http://localhost:${PORT}`);
+  console.log(`Environment: ${AppConfig.server.nodeEnv}`);
+  console.log(`Swagger documentation: http://localhost:${PORT}/api-docs`);
 });
